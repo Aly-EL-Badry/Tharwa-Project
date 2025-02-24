@@ -1,9 +1,10 @@
 //Author: Nagham Wael Mohamed Elsayed
 //ID: 20231189
 //version: V1.0
-//Last Modified: 22 Feb 2025
+//First Modified: 22 Feb 2025
+//Last Modified: 24 Feb 2025
 //Purpose: a to-do list console program
-
+//Features: Add a task , Remove a task , Display task details , Edit a task , Sort tasks , Display list , Clear list , Save list to a file
 
 
 import java.io.FileWriter;
@@ -34,11 +35,14 @@ public class Main {
             this.dueDate = dueDate;
         }
 
+        
+        //getters
         public String getName() {
             return name;
         }
 
 
+        //this is not used yet but is here for furher development in the future
         public String getDescription() {
             return description;
         }
@@ -48,26 +52,32 @@ public class Main {
             return priority;
         }
 
+
         public LocalDate getDueDate() {
             return dueDate;
         }
+
 
         public void setName(String name) {
             this.name = name;
         }
 
+
         public void setDescription(String description) {
             this.description = description;
         }
+
 
         public void setPriority(int priority) {
             this.priority = priority;
         }
 
+
         public void setDueDate(LocalDate dueDate) {
             this.dueDate = dueDate;
         }
 
+        
         @Override
         public String toString() {
             String priorityString;
@@ -82,14 +92,22 @@ public class Main {
                     "Task Priority: " + priorityString + "\n" +
                     "Due Date: " + dueDate.format(DateTimeFormatter.ofPattern("d-M-yyyy"));
         }
+        
+        
     }
+
 
     private static List<Task> tasks = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("d-M-yyyy");
 
+
+    
+    //the program's starting point(main function)
     public static void main(String[] args) {
         boolean running = true;
+
+        //display menu while the program is running(user didn't choose exit)
         while (running) {
             printMenu();
             String choice = scanner.nextLine().trim();
@@ -126,9 +144,12 @@ public class Main {
                     System.out.println("Invalid option. Please choose from 1 to 9.");
             }
         }
+
         scanner.close();
     }
 
+
+    //function for printing the menu
     private static void printMenu() {
         System.out.println("\nMain Menu:");
         System.out.println("1) Add a task");
@@ -143,6 +164,9 @@ public class Main {
         System.out.print("Select an option: ");
     }
 
+    
+    
+    //take task info through the add task menu option
     private static void addTask() {
         System.out.print("Enter Task Name: ");
         String name = scanner.nextLine().trim();
@@ -184,6 +208,9 @@ public class Main {
         System.out.println("Task added successfully.");
     }
 
+    
+    
+    //remove task throgh the remove task menu option
     private static void removeTask() {
         if (tasks.isEmpty()) {
             System.out.println("No tasks to remove.");
@@ -192,6 +219,7 @@ public class Main {
         displayList();
         System.out.print("Enter the number of the task to remove: ");
         String input = scanner.nextLine().trim();
+        //defensive programming
         try {
             int taskNumber = Integer.parseInt(input);
             if (taskNumber < 1 || taskNumber > tasks.size()) {
@@ -205,6 +233,9 @@ public class Main {
         }
     }
 
+    
+    
+    //display task details through display task menu option
     private static void displayTaskDetails() {
         if (tasks.isEmpty()) {
             System.out.println("No tasks to display.");
@@ -227,7 +258,10 @@ public class Main {
         }
     }
 
+    
+    //edit task through the edit task menu option
     private static void editTask() {
+        //defensive programming validate the list isn't empty
         if (tasks.isEmpty()) {
             System.out.println("No tasks to edit.");
             return;
@@ -288,6 +322,8 @@ public class Main {
         }
     }
 
+    
+    //sort tasks with two keys(priority or due date) through the sort tasks menu option
     private static void sortTasks() {
         if (tasks.isEmpty()) {
             System.out.println("No tasks to sort.");
@@ -310,6 +346,8 @@ public class Main {
         }
     }
 
+    
+    //display list on console screen through display list menu option
     private static void displayList() {
         if (tasks.isEmpty()) {
             System.out.println("Task list is empty.");
@@ -321,6 +359,8 @@ public class Main {
         }
     }
 
+    
+    //clear list through clear list menu option
     private static void clearList() {
         if (tasks.isEmpty()) {
             System.out.println("Task list is already empty.");
@@ -336,6 +376,9 @@ public class Main {
         }
     }
 
+    
+    
+    //save list to a .txt file so user can return to it later
     private static void saveListToFile() {
         if (tasks.isEmpty()) {
             System.out.println("No tasks to save.");
@@ -352,4 +395,6 @@ public class Main {
             System.out.println("Error saving to file: " + e.getMessage());
         }
     }
+    
+    
 }
