@@ -16,6 +16,7 @@ public class ContactManager {
     private ArrayList<contact>Contacts;
     private String File;
 
+    //Validation codes for data and files
 
     private String validNum(String num){
 
@@ -72,6 +73,8 @@ public class ContactManager {
 
     }
 
+
+    // Loading at the begining of the program the file
     private boolean LoadData(){
 
         //String NameOfFile =FileManagement();
@@ -166,6 +169,8 @@ public class ContactManager {
 
     }
 
+
+    //Functionalities of the program
     public boolean Add (){
 
         Scanner in = new Scanner(System.in);
