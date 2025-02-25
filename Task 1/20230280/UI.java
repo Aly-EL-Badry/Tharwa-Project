@@ -66,7 +66,7 @@ public class UI {
             String Choice =check_menu("you want to search by:\n1.phone number\n2.name\n\nEnter your choice : ",Choices);
 
 
-
+            // by phone number
             if(Choice.equals("1")) {
                 contact person = manager.Search(true);
                 if(person!=null)
@@ -75,7 +75,7 @@ public class UI {
                     System.out.printf("Sorry the contact is not found\n\n");
 
             }
-            else {
+            else { // by name
                 contact person = manager.Search(false);
                 if(person!=null)
                     System.out.println(person.tostring());
@@ -101,7 +101,7 @@ public class UI {
 
         }else{//Exit
 
-            if(!isSaved){
+            if(!isSaved){// for saving option
 
                 ArrayList<String>Choices=new ArrayList<String>(Arrays.asList("1","2"));
                 String Choice=check_menu("Do you want to save changes before exiting?\n1.Yes\n2.No\n\nEnter your choice : ",Choices);

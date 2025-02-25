@@ -17,10 +17,15 @@
 
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("##Welcome to the contact management system ##\n\n");
+
+        // the class is manging the flow of the program
         UI UserInterface= new UI();
         while (UserInterface.MainMenu());
+
         System.out.println("###Thanks for using our program####");
+
     }
 
 }
