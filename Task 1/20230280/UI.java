@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class UI {
 
-    static private boolean isSaved=false;
+    static private boolean isSaved=true;
     static private boolean isFirst=true;
     private  ContactManager manager;
     private String NameOfFile;
