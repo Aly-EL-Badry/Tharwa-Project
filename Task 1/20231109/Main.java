@@ -17,7 +17,7 @@ public class Main {
         ArrayList<Junior> juniors = new ArrayList<>();
         ArrayList<Senior> seniors = new ArrayList<>();
 
-        // Create the board with the existing worker lists
+        // Create the board with the exist ing worker lists
         Board board = new Board(juniors, mangers, seniors);
 
         // Main menu loop for user interaction

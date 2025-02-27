@@ -106,9 +106,11 @@ public class Normal extends Worker {
             return;
         }
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter task description: ");
-        String description = sc.nextLine();
+        String description;
+        do{
+            System.out.print("Enter task description: ");
+            description = sc.nextLine();
+        }while (description.isEmpty());
 
         String[] optionsOfPriority = {"High", "Medium", "Low"};
         String priority = optionsOfPriority[getValidChoice(optionsOfPriority, "\n===== Choose Priority =====")];
@@ -135,6 +137,7 @@ public class Normal extends Worker {
 
         LocalDate deadline;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        sc.nextLine();
         while (true) {
             System.out.print("Enter deadline (yyyy-MM-dd): ");
             String input = sc.nextLine();

@@ -19,7 +19,7 @@ public class Board {
     private ArrayList<Junior> juniors;
     private ArrayList<Manger> mangers;
     private ArrayList<Senior> seniors;
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     /**
      * Constructor to initialize Board with existing lists of Juniors, Managers, and Seniors.
@@ -45,13 +45,14 @@ public class Board {
 
             try {
                 num = Double.parseDouble(input);
-                if (num < 0)
+                if (num < 0 || num == -0)
                     System.out.println(Type + " cannot be negative. Please try again.");
                 else
                     break;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input! Please enter a numeric value.");
             }
+
         }
         return num;
     }
@@ -85,36 +86,14 @@ public class Board {
 
 
     /**
-     * Adds a new Junior or Senior worker to the system.
-     */
-    public void addWorker() {
-        System.out.println("Enter Worker Name");
-        String name = sc.nextLine();
-
-        double salary = isPositiveDouble("Worker's salary");
-
-        String[] fieldOptions = {"HR", "PR", "Sales and Marketing", "Web Developer", "App Developer", "Data Scientist"};
-        String field = fieldOptions[Normal.getValidChoice(fieldOptions, "Choose a field: ")];
-
-        long maxTasks = isPositiveLong("MaxTasks");
-
-        int workerType = Normal.getValidChoice(new String[]{"Junior", "Senior"}, "Choose Worker Junior or Senior");
-
-        if (workerType == 0)
-            juniors.add(new Junior(name, salary, field, maxTasks));
-        else {
-            long yearsExperience = isPositiveLong("Years of Experience :");
-            seniors.add(new Senior(name, salary, field, maxTasks, yearsExperience));
-        }
-        System.out.println("Worker added successfully.");
-    }
-
-    /**
      * Adds a new Manager to the system with unique credentials.
      */
     public void addManger() {
-        System.out.println("Enter Manager Name");
-        String name = sc.nextLine();
+        String name;
+        do {
+            System.out.println("Enter Manager Name: ");
+            name = sc.nextLine();
+        } while (name.isEmpty());
 
         double salary = isPositiveDouble("salary");
 
@@ -145,16 +124,45 @@ public class Board {
     }
 
     /**
+     * Adds a new Junior or Senior worker to the system.
+     */
+    public void addWorker() {
+        String name;
+        do {
+            System.out.println("Enter Worker Name");
+            name = sc.nextLine();
+        } while (name.isEmpty());
+
+        double salary = isPositiveDouble("Worker's salary");
+
+        String[] fieldOptions = {"HR", "PR", "Sales and Marketing", "Web Developer", "App Developer", "Data Scientist"};
+        String field = fieldOptions[Normal.getValidChoice(fieldOptions, "Choose a field: ")];
+
+        long maxTasks = isPositiveLong("MaxTasks");
+
+        int workerType = Normal.getValidChoice(new String[]{"Junior", "Senior"}, "Choose Worker Junior or Senior");
+
+        if (workerType == 0)
+            juniors.add(new Junior(name, salary, field, maxTasks));
+        else {
+            long yearsExperience = isPositiveLong("Years of Experience :");
+            seniors.add(new Senior(name, salary, field, maxTasks, yearsExperience));
+        }
+        System.out.println("Worker added successfully.");
+    }
+
+    /**
      * Assigns a task to an available Junior or Senior worker.
      */
     public void giveTask() {
         System.out.println("Choose if the worker is Junior or Senior");
-        int workerType = Normal.getValidChoice(new String[]{"Junior", "Senior"}, "Choose Worker Junior or Senior");
+        int workerType = Normal.getValidChoice(new String[]{"Junior", "Senior"},
+                "Choose Worker Junior or Senior");
 
         ArrayList<? extends Normal> workers = workerType == 0 ? juniors : seniors;
         long[] workersIDs = new long[workers.size()];
         boolean atLeastOneAvailable = workers.stream()
-                .anyMatch(worker -> worker.available());
+                .anyMatch(Normal::available);
         if(workers.isEmpty() || !atLeastOneAvailable ){
             System.out.println("No available workers found.");
             return;
@@ -184,7 +192,8 @@ public class Board {
      */
     public void givePenalty() {
         System.out.println("Choose if the worker is Junior or Senior");
-        int workerType = Normal.getValidChoice(new String[]{"Junior", "Senior"}, "Choose Worker Junior or Senior");
+        int workerType = Normal.getValidChoice(new String[]{"Junior", "Senior"},
+                "Choose Worker Junior or Senior");
 
         ArrayList<? extends Normal> workers = workerType == 0 ? juniors : seniors;
         long[] workersIDs = new long[workers.size()];
