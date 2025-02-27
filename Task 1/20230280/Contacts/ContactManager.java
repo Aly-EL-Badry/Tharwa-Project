@@ -98,11 +98,12 @@ public class ContactManager {
             line=reader.readLine();
 
             File=NameOfFile;
-
-            if(line==null)
-                return true;
-
             Contacts=new ArrayList<>();
+
+            if(line==null) {
+                return true;
+            }
+
 
             while (line!=null){
 
