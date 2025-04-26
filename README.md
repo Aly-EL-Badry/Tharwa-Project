@@ -8,3 +8,6 @@ https://drive.google.com/file/d/1-l8eXZtXxFNTDgrA5A3z2VnGhiTnrksV/view?usp=shari
 https://miro.com/app/board/uXjVIOBRPhU=/
 #### The link for the class diagram 
 https://app.diagrams.net/#G1ur9hwcOiEpEGw7NfDLpcxsdzo6gH-VJE#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
+
+#### The link for the seq diagram 
+https://app.diagrams.net/#G1p_RpdmRiZOA_I9Y83zHgBazrg6ZugS6y#%7B%22pageId%22%3A%222YBvvXClWsGukQMizWep%22%7D
