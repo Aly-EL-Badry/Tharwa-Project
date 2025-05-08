@@ -1,13 +1,20 @@
 # Assignment-1
-#### That Project implements idea of application "Tharwa". The idea is about investing . You can have a look at the SRS , SDS which includes( Class diagram , sequence diagram , State diagram and Architecture diagram) and the implementation of the project. The SDS includes some documentation about which design patterns and SOLID priciples are applied . The application targets a specific section of users that is mentioned in the preproject document.  
+#### That is our first project to start from scratch from getting the requirements till the implmenation and testing phase applying software cycle.<br>The Project goes over implmenting application "Tharwa". The idea is about investing . You can have a look at the SRS , SDS which includes( Class diagram , sequence diagram , State diagram and Architecture diagram) and the implementation of the project. The SDS includes some documentation about which design patterns and SOLID priciples are applied . The application targets a specific section of users that is mentioned in the preproject document.  
+
 #### The link of the use case diagram for direct access
 https://drive.google.com/file/d/1-l8eXZtXxFNTDgrA5A3z2VnGhiTnrksV/view?usp=sharing
+
 #### The link of the drive
 https://drive.google.com/file/d/1-l8eXZtXxFNTDgrA5A3z2VnGhiTnrksV/view?usp=sharing
+
 #### The link for the system navigatio map
 https://miro.com/app/board/uXjVIOBRPhU=/
-#### The link for the class diagram , state diagra , component diagram 
+
+#### The link for the class diagram , state diagram , component diagram 
 https://app.diagrams.net/#G1ur9hwcOiEpEGw7NfDLpcxsdzo6gH-VJE#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
 
 #### The link for the 6 seq diagrams 
 https://app.diagrams.net/#G1p_RpdmRiZOA_I9Y83zHgBazrg6ZugS6y#%7B%22pageId%22%3A%222YBvvXClWsGukQMizWep%22%7D
+
+#### The presentation link 
+https://www.canva.com/design/DAGmyUiPYIw/Zr2iSQpC-VBxQyLeBq6ZNw/edit
