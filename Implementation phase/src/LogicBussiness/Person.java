@@ -1,6 +1,5 @@
 package LogicBussiness;
 
-import java.util.Vector;
 public class Person {
     private String username;
     private String name;
