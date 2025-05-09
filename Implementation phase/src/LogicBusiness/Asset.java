@@ -55,13 +55,18 @@ public class Asset {
     }
 
     public void ViewAsset (){
+
         System.out.print("Asset \""+ Name +"\" :\n\n");
         System.out.print("Type : "+Type+"\n");
         System.out.print("Purchase data : "+purchaseTime+"\n");
         System.out.print("Quantity of that asset : "+Quantity+"\n");
         System.out.println("The goals of that asset : ");
-        for (int idx = 0; idx < Goals.size(); idx++) {
 
-        }
+        if(!Goals.isEmpty())
+            for (int idx = 0; idx < Goals.size(); idx++)
+                System.out.println("Goal #" + (idx + 1) + ": ");
+        else
+            System.out.println("Goals have not added yet !!");
+
     }
 }
