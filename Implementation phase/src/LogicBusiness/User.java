@@ -1,5 +1,8 @@
 package LogicBusiness;
 
+import ExternalAccs.BankAccount;   // Import from ExternalAccs
+import ExternalAccs.StockAccount; // Import from ExternalAccs
+
 import java.util.Vector;
 
 public class User extends Person {
