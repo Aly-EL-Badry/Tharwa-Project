@@ -17,31 +17,31 @@ public class Person {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+   public void setUsername(String val) {
+        this.username = val;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String val) {
+        this.name = val;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String val) {
+        this.password = val;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String val) {
+        this.email = val;
     }
 }
