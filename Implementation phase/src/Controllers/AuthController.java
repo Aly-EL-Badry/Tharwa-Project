@@ -39,7 +39,6 @@ public class AuthController {
 
         if (authenticatedUser == null) {
             System.out.println("Wrong Password or Username");
-            ViewMenu();
         } else {
             System.out.println("Login successful!");
             new DashboardController(authenticatedUser);
