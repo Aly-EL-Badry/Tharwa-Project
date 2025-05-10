@@ -68,5 +68,22 @@ public class Asset {
         else
             System.out.println("Goals have not added yet !!");
 
+        System.out.print("\n\n");
+    }
+
+    @Override
+    public boolean equals (Object obj){
+
+        if(this==obj)
+            return true;
+        if(obj==null || getClass() != obj.getClass())
+            return false;
+
+        Asset asset = (Asset) obj;
+        return asset.Name.equals(Name)
+                && asset.purchaseTime.equals(purchaseTime)
+                && asset.Type.equals(Type)
+                &&asset.Quantity==Quantity;
+
     }
 }

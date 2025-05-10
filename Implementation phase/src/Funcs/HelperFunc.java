@@ -20,4 +20,12 @@ public class HelperFunc {
 
         return currentAnswer;
     }
+
+    public static boolean isNum(String num){
+        for (int idx = 0; idx < num.length(); idx++)
+            if( !Character.isDigit(num.charAt(idx)) )
+                return false;
+        return true;
+
+    }
 }

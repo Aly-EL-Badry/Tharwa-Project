@@ -52,4 +52,14 @@ public class User extends Person {
         return assets;
     }
 
+    public boolean SearchAsset(Asset asset){
+        for (int idx = 0; idx < assets.size(); idx++)
+            if(assets.elementAt(idx).equals(asset))
+              return true;
+
+        return false;
+    }
+
+
+
 }
