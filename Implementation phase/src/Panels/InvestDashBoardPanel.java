@@ -108,9 +108,17 @@ public class InvestDashBoardPanel implements Panel{
             quantity=in.next();
         }
 
+        System.out.print("Enter the purchase price : ");
+        String price = in.next();
+        while(!HelperFunc.isFloat(price )){
+            System.out.println("Please enter a valid number !!");
+            System.out.print("Enter the purchase price : ");
+            price=in.next();
+        }
+
 
         //validation for repeating
-        Asset asset =new Asset(name,Type ,purchaseTime, Integer.parseInt(quantity));
+        Asset asset =new Asset(name,Type ,purchaseTime, Integer.parseInt(quantity),Integer.parseInt(price));
         boolean isFound =user.SearchAsset(asset);
         if(isFound)
             System.out.println("That Asset already exists !!\n\n");

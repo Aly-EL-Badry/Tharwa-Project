@@ -28,4 +28,15 @@ public class HelperFunc {
         return true;
 
     }
+
+    public static boolean isFloat(String num){
+        boolean dot =true;
+        for (int idx = 0; idx < num.length(); idx++) {
+            if (!Character.isDigit(num.charAt(idx)) && !dot)
+                return false;
+            if(num.charAt(idx)=='.')
+                dot=false;
+        }
+        return true;
+    }
 }

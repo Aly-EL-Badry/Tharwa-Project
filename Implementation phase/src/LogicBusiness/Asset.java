@@ -3,8 +3,9 @@ package LogicBusiness;
 import java.util.ArrayList;
 
 public class Asset {
+
    private String Name , Type , purchaseTime ;
-   private int Quantity ;
+   private int Quantity  ,PurchasePrice;
    private ArrayList<Goal> Goals;
 
     public ArrayList<Goal> getGoals() {
@@ -27,6 +28,14 @@ public class Asset {
         return Type;
     }
 
+    public void setPurchasePrice(int purchasePrice) {
+        PurchasePrice = purchasePrice;
+    }
+
+    public int getPurchasePrice() {
+        return PurchasePrice;
+    }
+
     public void setGoal(Goal goal) {
         Goals.add(goal);
     }
@@ -47,11 +56,12 @@ public class Asset {
         Name = val;
     }
 
-    public Asset(String Name , String Type , String purchaseTime , int Quantity){
+    public Asset(String Name , String Type , String purchaseTime , int Quantity ,int PurchasePrice){
         this.Name=Name;
         this.purchaseTime=purchaseTime;
         this.Type=Type;
         this.Quantity=Quantity;
+        this.PurchasePrice=PurchasePrice;
     }
 
     public void ViewAsset (){
