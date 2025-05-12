@@ -13,6 +13,7 @@ import java.util.Arrays;
 
 public class DashboardController {
     private User user;
+    private Panel panel;
     private void viewMenu (){
 
         System.out.println("                   ##Welcome ya investor "+user.getName()+"##\n\n");
@@ -25,7 +26,6 @@ public class DashboardController {
                    "Enter your choice : ";
            ArrayList<String> choices = new ArrayList<>(Arrays.asList("1","2","3","4"));
            String choice = HelperFunc.check_menu(text,choices);
-           Panel panel;
            if(choice.equals("1"))
                panel= new InvestDashBoardPanel(user);
            else if(choice.equals("2"))
@@ -36,6 +36,8 @@ public class DashboardController {
                System.out.println("Now You are logged out !!");
                break;
            }
+
+           panel.ViewMenu();
 
        }
     }
