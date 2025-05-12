@@ -48,33 +48,6 @@ public class UserRepo {
 
     public void Adduser(User user){
         users.add(user);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Users.txt", true))) {
-            writer.write(user.getUsername() + "\n");
-            writer.write(user.getName() + "\n");
-            writer.write(user.getPassword() + "\n");
-            writer.write(user.getEmail() + "\n");
-
-            writer.write(user.getAssets().size() + "\n");
-            for (Asset a : user.getAssets()) {
-                writer.write(a.getName() + "\n");
-                writer.write(a.getType() + "\n");
-                writer.write(a.getPurchaseTime() + "\n");
-                writer.write(a.getQuantity() + "\n");
-                writer.write(a.getPurchasePrice() + "\n");
-            }
-
-            writer.write(user.getAccounts().size() + "\n");
-            for (BankAccount b : user.getAccounts()) {
-                writer.write(b.getBankName() + "\n");
-                writer.write(b.getCardNumber() + "\n");
-                writer.write(b.getCardHolderName() + "\n");
-                writer.write(b.getExpiryDate() + "\n");
-                writer.write(b.getOTP() + "\n");
-                writer.write(b.getCVV() + "\n");
-            }
-        } catch (IOException e) {
-            System.err.println("Error writing user to file: " + e.getMessage());
-        }
     }
 
     public boolean search(User user){
