@@ -5,13 +5,71 @@ import Funcs.HelperFunc;
 import java.util.Scanner;
 
 public class BankAccount {
-    private  int OTP , CVV ;
-    private  String  cardNumber, cardHolderName , expiryDate;
+    private int OTP , CVV ;
+    private String  cardNumber, cardHolderName , expiryDate;
     private String bankName;
 
-    public BankAccount( ){
+    public int getOTP() {
+        return OTP;
+    }
+
+    public void setOTP(int OTP) {
+        this.OTP = OTP;
+    }
+
+    public int getCVV() {
+        return CVV;
+    }
+
+    public void setCVV(int CVV) {
+        this.CVV = CVV;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getCardHolderName() {
+        return cardHolderName;
+    }
+
+    public void setCardHolderName(String cardHolderName) {
+        this.cardHolderName = cardHolderName;
+    }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public BankAccount(){
 
     }
+    public BankAccount(String BankName, String CardNumber, String CardHolderName , String ExpiryDate, int otp, int cvv){
+        this.OTP = otp;
+        this.cardNumber = cardNumber;
+        this.cardHolderName = cardHolderName;
+        this.expiryDate = expiryDate;
+        this.OTP = otp;
+        this.CVV = cvv;
+
+    }
+
     public void gatherInfo (String bankName){
         Scanner in = new Scanner(System.in);
 
