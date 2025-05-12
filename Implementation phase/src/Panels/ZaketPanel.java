@@ -10,27 +10,33 @@ import java.util.Vector;
 
 public class ZaketPanel implements Panel{
 
-    private User user;
+    final private User user;
 
     public ZaketPanel(User user){this.user=user;}
 
     @Override
     public void ViewMenu() {
+        label:
         while(true){
             System.out.println("# === Zaket Panel === #");
     
             String Menu = "1.Zakat Calculation\n2.Halal investment Screen\n3.Tax Complaint\n4.Go back\nEnter your choice :";
             ArrayList<String> choices = new ArrayList<>(Arrays.asList("1", "2", "3", "4"));
             String choice = HelperFunc.check_menu(Menu, choices);
-    
-            if(choice.equals("1"))
-                zakatCalculation();
-            else if (choice.equals("2"))
-                HalalInvestment();
-            else if (choice.equals("3"))
-                TaxComplaintsRepo();
-            else 
-                break;
+
+            switch (choice) {
+                case "1":
+                    zakatCalculation();
+                    break;
+                case "2":
+                    HalalInvestment();
+                    break;
+                case "3":
+                    TaxComplaintsRepo();
+                    break;
+                default:
+                    break label;
+            }
         }
     }
 
@@ -38,7 +44,7 @@ public class ZaketPanel implements Panel{
     public void zakatCalculation(){
         final double MINIMUM_VALUE_FOR_ZAKET = 7246;
         final double ZAKAH_PRECENTAGE = 2.5/100;
-        double TotalWealth = 0, Zakah = 0;
+        double TotalWealth = 0, Zakah;
 
         Vector<Asset> userAssets = user.getAssets();
 
