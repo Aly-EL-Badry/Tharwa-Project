@@ -69,6 +69,7 @@ public class Asset {
         System.out.print("Asset \""+ Name +"\" :\n\n");
         System.out.print("Type : "+Type+"\n");
         System.out.print("Purchase data : "+purchaseTime+"\n");
+        System.out.print("Purchase price : "+PurchasePrice+"\n");
         System.out.print("Quantity of that asset : "+Quantity+"\n");
         System.out.println("The goals of that asset : ");
 
