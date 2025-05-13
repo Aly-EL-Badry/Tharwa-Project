@@ -11,7 +11,7 @@ public class API_AhlyBank implements BanksAPIs_Account{
     public BankAccount Connection() {
 
         BankAccount account = new BankAccount();
-        account.gatherInfo("HSBC bank");
+        account.gatherInfo("Ahly bank");
 
         // some authentications and coding related to the bank
         //......... to get the account
