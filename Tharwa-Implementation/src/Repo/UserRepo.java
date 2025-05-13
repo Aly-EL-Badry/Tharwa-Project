@@ -1,4 +1,5 @@
 package Repo;
+
 import ExternalAccs.BankAccount;
 import LogicBusiness.Asset;
 import LogicBusiness.User;
@@ -6,12 +7,26 @@ import LogicBusiness.User;
 import java.util.Vector;
 import java.io.*;
 
+/**
+ * UserRepo is a repository class that manages a collection of User objects.
+ * It provides functionality for adding users, searching for users by username,
+ * email, and credentials, and saving and loading users to and from a file.
+ * <p>
+ * The class also manages assets and bank account information for each user.
+ */
 public class UserRepo {
+
     private Vector<User> users;
 
-    public UserRepo(){
+    /**
+     * Constructor that loads user data from a file.
+     * The file contains information about users, assets, and bank accounts.
+     *
+     * @throws RuntimeException if there is an error reading the file.
+     */
+    public UserRepo() {
         users = new Vector<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/Repo/Users"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Repo/Users"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String userName = line;
@@ -19,7 +34,6 @@ public class UserRepo {
                 String password = br.readLine();
                 String email = br.readLine();
                 User user = new User(userName, fullName, password, email);
-
 
                 int numAssets = Integer.parseInt(br.readLine());
                 for (int i = 0; i < numAssets; i++) {
@@ -46,22 +60,40 @@ public class UserRepo {
         } catch (IOException e) {
             System.err.println("Error reading file");
         }
-    };
+    }
 
-    public void Adduser(User user){
+    /**
+     * Adds a new user to the repository.
+     *
+     * @param user the user to be added.
+     */
+    public void Adduser(User user) {
         users.add(user);
     }
 
-    public boolean search(User user){
-        for(User u : users){
-            if(u.getUsername().equals(user.getUsername()) || u.getEmail().equals(user.getEmail())){
+    /**
+     * Searches for a user by checking the username or email.
+     *
+     * @param user the user to search for.
+     * @return true if the user exists, false otherwise.
+     */
+    public boolean search(User user) {
+        for (User u : users) {
+            if (u.getUsername().equals(user.getUsername()) || u.getEmail().equals(user.getEmail())) {
                 return true;
             }
         }
         return false;
     }
 
-    public User search(String Username, String Password){
+    /**
+     * Searches for a user by username and password.
+     *
+     * @param Username the username of the user.
+     * @param Password the password of the user.
+     * @return the matching user if found, null otherwise.
+     */
+    public User search(String Username, String Password) {
         for (User user : users) {
             if (user.getUsername().equals(Username) && user.getPassword().equals(Password)) {
                 return user;
@@ -70,6 +102,10 @@ public class UserRepo {
         return null;
     }
 
+    /**
+     * Saves all user data to the file.
+     * This includes user information, assets, and bank accounts.
+     */
     public void saveAll() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Repo/Users"))) {
             for (User user : users) {

@@ -6,12 +6,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Vector;
-
+/**
+ * The InvestDashBoardPanel class provides the functionality for managing assets.
+ * It allows users to add, remove, view, and edit their assets.
+ * This class is part of a menu-based system where users can interact with their assets.
+ */
 public class InvestDashBoardPanel implements Panel{
     private final User user ;
 
-
-
+    /**
+     * Displays the asset management menu and allows the user to choose between
+     * adding, removing, viewing, or editing assets. This method runs continuously
+     * until the user chooses to go back.
+     */
     @Override
     public void ViewMenu() {
         while (true) {
@@ -37,19 +44,27 @@ public class InvestDashBoardPanel implements Panel{
 
     }
 
+    /**
+     * Constructor for the InvestDashBoardPanel.
+     * Initializes the panel with the provided user.
+     *
+     * @param user the User object associated with this panel.
+     */
     public InvestDashBoardPanel(User user){
         this.user=user;
     }
 
+    /**
+     * Allows the user to add a new asset by providing its name, type, and purchase date.
+     * The asset's type is validated from a list of predefined options (Gold, Real state, Crypto, Stocks).
+     * The purchase date is validated to ensure that the day and month are within valid ranges.
+     */
     public void addAsset (){
         Scanner in = new Scanner(System.in);
 
         System.out.print("Enter the name of the asset : ");
         String name="" ;
         name =HelperFunc.getNonEmptyInput(name);
-
-
-
 
         // validation for type
         String menu = "Choose a type for the new asset" +
@@ -65,9 +80,6 @@ public class InvestDashBoardPanel implements Panel{
             Type="Crypto";
         else
             Type="Stocks";
-
-
-
 
         //validation for date
         System.out.print("Enter the purchase date !! ");
@@ -129,7 +141,11 @@ public class InvestDashBoardPanel implements Panel{
         }
     }
 
-  public void removeAsset(){
+    /**
+     * Removes an asset from the user's portfolio.
+     * The specific removal logic can be implemented here.
+     */
+    public void removeAsset(){
         Vector<Asset> assets = user.getAssets();
         if (assets.isEmpty()) {
             System.out.println("No assets available to remove!\n\n");
@@ -173,6 +189,11 @@ public class InvestDashBoardPanel implements Panel{
                 ", Date=" + removedAsset.getPurchaseTime() +
                 ", Qty=" + removedAsset.getQuantity() + "\n");
     }
+
+    /**
+     * Displays the user's assets.
+     * This method will allow the user to view all of their current assets.
+     */
     public void ViewAssets (){
         Vector<Asset> assets = user.getAssets();
         for (int idx = 0; idx < assets.size(); idx++) {
@@ -181,6 +202,10 @@ public class InvestDashBoardPanel implements Panel{
         }
     }
 
+    /**
+     * Edits an existing asset in the user's portfolio.
+     * This method will allow the user to modify the details of an asset.
+     */
     public void EditAsset() {
         Vector<Asset> assets = user.getAssets();
         if (assets.isEmpty()) {
@@ -328,7 +353,12 @@ public class InvestDashBoardPanel implements Panel{
         }
     }
 
+    /**
+     * Evaluates the performance of the user's assets.
+     * This method calculates the growth or loss of assets based on their initial price
+     * and current market value (which might be retrieved from an external source).
+     */
     public void Evaluate(){
-
+        // Not implemented yet
     }
 }
