@@ -32,12 +32,17 @@
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies and tools that are used
 
 - **Java** (Core Language)
 - **Object-Oriented Design**
 - **Console-Based I/O**
 - **File Handling** (for local data storage)
+- **Github** : For version control and sharing work
+- **draw.io**: For making system diagrams
+- **Miro**: For system navigation map
+- **Intellij Idea**: IDE for writing code
+- **Javadoc**: For generating documentation
 
 ---
 
@@ -68,9 +73,9 @@ The project includes full SDLC documentation:
 
 ## 👨‍💻 Contributors
 
-- **Aly El-Deen Yasser Ali**
+- **Fatema El-Zhraa Ahmed "Project Leader"**
 - **Nagham Wael**
-- **Fatema El-Zhraa Ahmed**
+- **Aly El-Deen Yasser Ali**
 
 ---
 
