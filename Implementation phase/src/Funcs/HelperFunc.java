@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HelperFunc {
+    private static Scanner scanner = new Scanner(System.in);
+
     public static String check_menu( String menuText , ArrayList<String> choices){
 
         String currentAnswer;
@@ -38,5 +40,15 @@ public class HelperFunc {
                 dot=false;
         }
         return true;
+    }
+    public static String getNonEmptyInput(String prompt) {
+        String input = "";
+        while (input.trim().isEmpty()) {
+            System.out.println(prompt);
+            input = scanner.nextLine();
+            if(input.trim().isEmpty())
+                System.out.println("Please Enter a valid option !!\n");
+        }
+        return input;
     }
 }

@@ -11,7 +11,7 @@ public class UserRepo {
 
     public UserRepo(){
         users = new Vector<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Users.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Repo/Users"))) {
             String userName = br.readLine();
             String fullName = br.readLine();
             String password = br.readLine();
@@ -65,11 +65,11 @@ public class UserRepo {
                 return user;
             }
         }
-        throw new RuntimeException("User not found");
+        return null;
     }
 
     public void saveAll() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Users.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Repo/Users"))) {
             for (User user : users) {
                 writer.write(user.getUsername() + "\n");
                 writer.write(user.getName() + "\n");

@@ -6,12 +6,13 @@ import LogicBusiness.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
+
 
 public class AuthController {
 
     private UserRepo repo;
-    private Scanner scanner;
 
     public AuthController() {
         this.repo = new UserRepo();
@@ -34,16 +35,13 @@ public class AuthController {
     }
 
     public void SignUp() {
-        System.out.println("Enter your username:");
-        String username = scanner.nextLine();
-        System.out.println("Enter your full name:");
-        String fullName = scanner.nextLine();
-        System.out.println("Enter your email:");
-        String email = scanner.nextLine();
-        System.out.println("Enter a password:");
-        String password = scanner.nextLine();
 
-        User user = VerifyCred(new User(username, fullName, email, password));
+        String username = HelperFunc.getNonEmptyInput("Enter your username: ");
+        String fullName = HelperFunc.getNonEmptyInput("Enter your full name: ");
+        String email = HelperFunc.getNonEmptyInput("Enter your email: ");
+        String password = HelperFunc.getNonEmptyInput("Enter your password: ");
+
+        User user = VerifyCred(new User(username, fullName, password, email));
 
         if(user != null) {
             repo.Adduser(user);
@@ -55,11 +53,8 @@ public class AuthController {
 
     public void Login() {
         // Get username and password from user input
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
-
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
+        String username = HelperFunc.getNonEmptyInput("Enter your username: ");
+        String password = HelperFunc.getNonEmptyInput("Enter your password: ");
 
         User authenticatedUser = Verification(username, password);
 
@@ -75,7 +70,7 @@ public class AuthController {
         label:
         while(true){
             System.out.println("Welcome to the Our Program");
-            String Menu = "1. Sign Up\n2. Login\n3. Exit";
+            String Menu = "1. Sign Up\n2. Login\n3. Exit\nEnter your choice:";
             ArrayList<String> choices = new ArrayList<>(Arrays.asList("1", "2", "3"));
             String choice = HelperFunc.check_menu(Menu, choices);
 
