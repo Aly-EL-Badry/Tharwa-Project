@@ -32,12 +32,12 @@ public class User extends Person {
         accounts.add(account);
     }
 
-    public void delAccounts(Asset asset) {
-        accounts.remove(asset);
+    public void delAccounts(BankAccount account) {
+        accounts.remove(account);
     }
 
-    public void delStocks(Asset asset) {
-        stocks.remove(asset);
+    public void delStocks(StockAccount account) {
+        stocks.remove(account);
     }
 
     public Vector<BankAccount> getAccounts() {

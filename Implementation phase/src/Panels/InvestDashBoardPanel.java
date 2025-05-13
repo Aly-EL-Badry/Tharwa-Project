@@ -128,8 +128,8 @@ public class InvestDashBoardPanel implements Panel{
         }
     }
 
-    public void removeAsset(){
- Vector<Asset> assets = user.getAssets();
+  public void removeAsset(){
+        Vector<Asset> assets = user.getAssets();
         if (assets.isEmpty()) {
             System.out.println("No assets available to remove!\n\n");
             return;
@@ -139,12 +139,17 @@ public class InvestDashBoardPanel implements Panel{
         System.out.println("Available assets:");
         for (int i = 0; i < assets.size(); i++) {
             System.out.print((i + 1) + ". ");
-            assets.get(i).ViewAsset();
+            Asset asset = assets.get(i);
+            System.out.print("Name: " + asset.getName());
+            System.out.print(", Type: " + asset.getType());
+            System.out.print(", Purchase Price: " + asset.getPurchasePrice());
+            System.out.print(", Date: " + asset.getPurchaseTime());
+            System.out.println(", Qty: " + asset.getQuantity());
         }
 
         // Get user input for which asset to remove
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter the number of asset to remove (or 0 to cancel): ");
+        System.out.print("\nEnter the number of asset to remove (or 0 to cancel): ");
         String input = in.next();
 
         while (!HelperFunc.isNum(input) || Integer.parseInt(input) < 0 || Integer.parseInt(input) > assets.size()) {
@@ -161,9 +166,12 @@ public class InvestDashBoardPanel implements Panel{
 
         // Remove the selected asset
         Asset removedAsset = assets.remove(choice - 1);
-        System.out.println("Asset '" + removedAsset.getName() + "' removed successfully!\n\n");
+        System.out.println("\nAsset '" + removedAsset.getName() + "' removed successfully!");
+        System.out.println("Details: Type=" + removedAsset.getType() +
+                ", Purchase Price=" + removedAsset.getPurchasePrice() +
+                ", Date=" + removedAsset.getPurchaseTime() +
+                ", Qty=" + removedAsset.getQuantity() + "\n");
     }
-
     public void ViewAssets (){
         Vector<Asset> assets = user.getAssets();
         for (int idx = 0; idx < assets.size(); idx++) {
@@ -172,8 +180,8 @@ public class InvestDashBoardPanel implements Panel{
         }
     }
 
-    public void EditAsset(){
-Vector<Asset> assets = user.getAssets();
+    public void EditAsset() {
+        Vector<Asset> assets = user.getAssets();
         if (assets.isEmpty()) {
             System.out.println("No assets available to edit!\n\n");
             return;
@@ -183,12 +191,17 @@ Vector<Asset> assets = user.getAssets();
         System.out.println("Available assets:");
         for (int i = 0; i < assets.size(); i++) {
             System.out.print((i + 1) + ". ");
-            assets.get(i).ViewAsset();
+            Asset asset = assets.get(i);
+            System.out.print("Name: " + asset.getName());
+            System.out.print(", Type: " + asset.getType());
+            System.out.print(", Purchase Price: " + asset.getPurchasePrice());
+            System.out.print(", Date: " + asset.getPurchaseTime());
+            System.out.println(", Qty: " + asset.getQuantity());
         }
 
         // Get user input for which asset to edit
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter the number of asset to edit (or 0 to cancel): ");
+        System.out.print("\nEnter the number of asset to edit (or 0 to cancel): ");
         String input = in.next();
 
         while (!HelperFunc.isNum(input) || Integer.parseInt(input) < 0 || Integer.parseInt(input) > assets.size()) {
@@ -206,28 +219,31 @@ Vector<Asset> assets = user.getAssets();
         Asset assetToEdit = assets.get(choice - 1);
 
         // Display edit menu
-        String menu = "What would you like to edit?\n" +
+        String menu = "\nWhat would you like to edit?\n" +
                 "1. Name\n" +
                 "2. Type\n" +
-                "3. Purchase Date\n" +
-                "4. Quantity\n" +
-                "5. Cancel\n" +
+                "3. Purchase Price\n" +
+                "4. Purchase Date\n" +
+                "5. Quantity\n" +
+                "6. Cancel\n" +
                 "Enter your choice: ";
 
-        ArrayList<String> choices = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5"));
+        ArrayList<String> choices = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6"));
         String editChoice = HelperFunc.check_menu(menu, choices);
 
         switch (editChoice) {
             case "1": // Edit Name
                 in.nextLine(); // Consume newline
-                System.out.print("Enter new name (current: " + assetToEdit.getName() + "): ");
+                System.out.print("\nCurrent name: " + assetToEdit.getName());
+                System.out.print("\nEnter new name: ");
                 String newName = in.nextLine();
                 assetToEdit.setName(newName);
-                System.out.println("Name updated successfully!\n\n");
+                System.out.println("\nName updated successfully!\n");
                 break;
 
             case "2": // Edit Type
-                String typeMenu = "Choose new type:\n" +
+                System.out.print("\nCurrent type: " + assetToEdit.getType());
+                String typeMenu = "\nChoose new type:\n" +
                         "1. Gold\n" +
                         "2. Real state\n" +
                         "3. Crypto\n" +
@@ -243,13 +259,27 @@ Vector<Asset> assets = user.getAssets();
                 else newType = "Stocks";
 
                 assetToEdit.setType(newType);
-                System.out.println("Type updated successfully!\n\n");
+                System.out.println("\nType updated to " + newType + "!\n");
                 break;
 
-            case "3": // Edit Purchase Date
-                System.out.print("Enter new purchase date (current: " + assetToEdit.getPurchaseTime() + ")\n");
+            case "3": // Edit Purchase Price
+                System.out.print("\nCurrent price: " + assetToEdit.getPurchasePrice());
+                System.out.print("\nEnter new purchase price: ");
+                String priceInput = in.next();
+                while (!HelperFunc.isNum(priceInput) || Integer.parseInt(priceInput) <= 0) {
+                    System.out.println("Please enter a valid positive number!");
+                    System.out.print("Enter new purchase price: ");
+                    priceInput = in.next();
+                }
+                assetToEdit.setPurchasePrice(Integer.parseInt(priceInput));
+                System.out.println("\nPurchase price updated to " + priceInput + "!\n");
+                break;
 
-                System.out.print("Day: ");
+            case "4": // Edit Purchase Date
+                System.out.print("\nCurrent date: " + assetToEdit.getPurchaseTime());
+                System.out.println("\nEnter new purchase date:");
+
+                System.out.print("Day (1-31): ");
                 String day = in.next();
                 while (!HelperFunc.isNum(day) || Integer.parseInt(day) > 31 || Integer.parseInt(day) < 1) {
                     System.out.println("Please enter a valid day (1-31)!");
@@ -257,7 +287,7 @@ Vector<Asset> assets = user.getAssets();
                     day = in.next();
                 }
 
-                System.out.print("Month: ");
+                System.out.print("Month (1-12): ");
                 String month = in.next();
                 while (!HelperFunc.isNum(month) || Integer.parseInt(month) > 12 || Integer.parseInt(month) < 1) {
                     System.out.println("Please enter a valid month (1-12)!");
@@ -265,7 +295,7 @@ Vector<Asset> assets = user.getAssets();
                     month = in.next();
                 }
 
-                System.out.print("Year: ");
+                System.out.print("Year (1800-2025): ");
                 String year = in.next();
                 while (!HelperFunc.isNum(year) || Integer.parseInt(year) > 2025 || Integer.parseInt(year) < 1800) {
                     System.out.println("Please enter a valid year (1800-2025)!");
@@ -275,23 +305,24 @@ Vector<Asset> assets = user.getAssets();
 
                 String newDate = day + "/" + month + "/" + year;
                 assetToEdit.setPurchaseTime(newDate);
-                System.out.println("Purchase date updated successfully!\n\n");
+                System.out.println("\nPurchase date updated to " + newDate + "!\n");
                 break;
 
-            case "4": // Edit Quantity
-                System.out.print("Enter new quantity (current: " + assetToEdit.getQuantity() + "): ");
+            case "5": // Edit Quantity
+                System.out.print("\nCurrent quantity: " + assetToEdit.getQuantity());
+                System.out.print("\nEnter new quantity: ");
                 String quantity = in.next();
-                while (!HelperFunc.isNum(quantity)) {
-                    System.out.println("Please enter a valid number!");
+                while (!HelperFunc.isNum(quantity) || Integer.parseInt(quantity) < 0) {
+                    System.out.println("Please enter a valid non-negative number!");
                     System.out.print("Enter new quantity: ");
                     quantity = in.next();
                 }
                 assetToEdit.setQuantity(Integer.parseInt(quantity));
-                System.out.println("Quantity updated successfully!\n\n");
+                System.out.println("\nQuantity updated to " + quantity + "!\n");
                 break;
 
-            case "5": // Cancel
-                System.out.println("Edit cancelled.\n\n");
+            case "6": // Cancel
+                System.out.println("\nEdit cancelled.\n");
                 break;
         }
     }
