@@ -54,44 +54,58 @@ public class BankAccount {
         System.out.print("Enter your CVV number : ");
         String cvv = in.next();
         while(!HelperFunc.isNum(cvv)||cvv.length()>4||cvv.length()<3) {
-            System.out.println("Pls enter a valid num");
+            System.out.println("Pls enter a valid cvv num");
+            System.out.print("Enter your CVV number : ");
             cvv=in.next();
         }
         CVV=Integer.parseInt(cvv);
 
         System.out.print("Enter your card number : ");
         String cardNum = in.next();
-        while(!HelperFunc.isNum(cardNum)||cardNum.length()!=16) {
-            System.out.println("Pls enter a valid num");
+        String regex = "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$";
+        while(!cardNum.matches(regex)) {
+            System.out.println("Pls enter a valid card num !!");
+            System.out.print("Enter your card number : ");
             cardNum=in.next();
         }
         cardNumber=cardNum;
 
         System.out.print("Enter your expiry date !!\n");
 
+
+        System.out.print("Enter the day :");
+        String day = in.next();
+        while(!HelperFunc.isNum(day )|| (Integer.parseInt(day)>31||Integer.parseInt(day)<1)){
+            System.out.println("Please enter a valid day !!");
+            System.out.print("Enter the day :");
+            day=in.next();
+        }
+
         System.out.print("Enter the month :");
         String month = in.next();
-        while(!HelperFunc.isNum(month )|| (Integer.parseInt(month)<=12&&Integer.parseInt(month)>=1)){
+        while(!HelperFunc.isNum(month )|| (Integer.parseInt(month)>12||Integer.parseInt(month)<1)){
             System.out.println("Please enter a valid month !!");
             System.out.print("Enter the month :");
             month=in.next();
         }
         System.out.print("Enter the year :");
         String year = in.next();
-        while(!HelperFunc.isNum(year )|| (Integer.parseInt(year)<=2025&&Integer.parseInt(year)>=1800)){
+        while(!HelperFunc.isNum(year )|| (Integer.parseInt(year)<2025)){
             System.out.println("Please enter a valid year !!");
             System.out.print("Enter the year :");
             year=in.next();
         }
-         expiryDate  = month+'/'+year;
+         expiryDate  = day+'-'+month+'-'+year;
 
         System.out.print("Enter the card Holder name : ");
-         cardHolderName = in.next();
+        cardHolderName="";
+        cardHolderName=HelperFunc.getNonEmptyInput(cardHolderName);
 
         System.out.print("Enter your OTP : ");
         String otp = in.next();
         while(!HelperFunc.isNum(otp)||otp.length()!=6) {
-            System.out.println("Pls enter a valid num");
+            System.out.println("Pls enter a valid OTP num !!");
+            System.out.print("Enter your OTP : ");
             otp=in.next();
         }
         OTP=Integer.parseInt(otp);

@@ -38,7 +38,17 @@ public class AuthController {
 
         String username = HelperFunc.getNonEmptyInput("Enter your username: ");
         String fullName = HelperFunc.getNonEmptyInput("Enter your full name: ");
-        String email = HelperFunc.getNonEmptyInput("Enter your email: ");
+        String email;
+        while (true) {
+             email = HelperFunc.getNonEmptyInput("Enter your email: ");
+            String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+            if (email.matches(emailRegex)) {
+                // Valid email, break out of the loop
+                break;
+            } else {
+                System.out.println("❌ Invalid email format. Please try again.");
+            }
+        }
         String password = HelperFunc.getNonEmptyInput("Enter your password: ");
 
         User user = VerifyCred(new User(username, fullName, password, email));

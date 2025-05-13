@@ -15,8 +15,7 @@ public class InvestDashBoardPanel implements Panel{
     @Override
     public void ViewMenu() {
         while (true) {
-
-            System.out.println("        ##Asset Panel ##\n");
+            System.out.println("# === Asset Panel === #");
 
             String Menu = "1.add Asset\n2.Remove Asset\n3.ViewAssets\n4.EditAsset\n5.Go back\nEnter your choice :";
             ArrayList<String> choices = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5"));
@@ -46,7 +45,9 @@ public class InvestDashBoardPanel implements Panel{
         Scanner in = new Scanner(System.in);
 
         System.out.print("Enter the name of the asset : ");
-        String name = in.nextLine();
+        String name="" ;
+        name =HelperFunc.getNonEmptyInput(name);
+
 
 
 
@@ -73,7 +74,7 @@ public class InvestDashBoardPanel implements Panel{
 
         System.out.print("Enter the day :");
         String day = in.next();
-        while(!HelperFunc.isNum(day )|| (Integer.parseInt(day)<=31&&Integer.parseInt(day)>=1)){
+        while(!HelperFunc.isNum(day )|| (Integer.parseInt(day)>31||Integer.parseInt(day)<1)){
             System.out.println("Please enter a valid day !!");
             System.out.print("Enter the day :");
             day=in.next();
@@ -81,7 +82,7 @@ public class InvestDashBoardPanel implements Panel{
 
         System.out.print("Enter the month :");
         String month = in.next();
-        while(!HelperFunc.isNum(month )|| (Integer.parseInt(month)<=12&&Integer.parseInt(month)>=1)){
+        while(!HelperFunc.isNum(month )|| (Integer.parseInt(month)>12||Integer.parseInt(month)<1)){
             System.out.println("Please enter a valid month !!");
             System.out.print("Enter the month :");
             month=in.next();
@@ -89,12 +90,12 @@ public class InvestDashBoardPanel implements Panel{
 
         System.out.print("Enter the year :");
         String year = in.next();
-        while(!HelperFunc.isNum(year )|| (Integer.parseInt(year)<=2025&&Integer.parseInt(year)>=1800)){
+        while(!HelperFunc.isNum(year )|| (Integer.parseInt(year)>2025||Integer.parseInt(year)<1800)){
             System.out.println("Please enter a valid year !!");
             System.out.print("Enter the year :");
             year=in.next();
         }
-        String purchaseTime = day+'/'+month+'/'+year;
+        String purchaseTime = day+'-'+month+'-'+year;
 
 
 

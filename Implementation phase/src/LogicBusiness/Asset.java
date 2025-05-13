@@ -62,6 +62,7 @@ public class Asset {
         this.Type=Type;
         this.Quantity=Quantity;
         this.PurchasePrice=PurchasePrice;
+        Goals= new ArrayList<>();
     }
 
     public void ViewAsset (){

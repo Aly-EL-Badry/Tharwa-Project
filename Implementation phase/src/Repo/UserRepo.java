@@ -11,36 +11,38 @@ public class UserRepo {
 
     public UserRepo(){
         users = new Vector<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/Repo/Users"))) {
-            String userName = br.readLine();
-            String fullName = br.readLine();
-            String password = br.readLine();
-            String email = br.readLine();
-            User user = new User(userName, fullName, password, email);
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Repo/Users"))){
+            String line;
+            while ((line = br.readLine()) != null) {
+                String userName = line;
+                String fullName = br.readLine();
+                String password = br.readLine();
+                String email = br.readLine();
+                User user = new User(userName, fullName, password, email);
 
 
-            int numAssets = Integer.parseInt(br.readLine());
-            for (int i = 0; i < numAssets; i++) {
-                String Assetname = br.readLine();
-                String type = br.readLine();
-                String purchaseTime = br.readLine();
-                int quantity = Integer.parseInt(br.readLine());
-                int price = Integer.parseInt(br.readLine());
-                user.setAsset(new Asset(Assetname, type, purchaseTime, quantity, price));
+                int numAssets = Integer.parseInt(br.readLine());
+                for (int i = 0; i < numAssets; i++) {
+                    String Assetname = br.readLine();
+                    String type = br.readLine();
+                    String purchaseTime = br.readLine();
+                    int quantity = Integer.parseInt(br.readLine());
+                    int price = Integer.parseInt(br.readLine());
+                    user.setAsset(new Asset(Assetname, type, purchaseTime, quantity, price));
+                }
+
+                int numAccounts = Integer.parseInt(br.readLine());
+                for (int i = 0; i < numAccounts; i++) {
+                    String bankName = br.readLine();
+                    String cardNumber = br.readLine();
+                    String cardHolder = br.readLine();
+                    String expireDate = br.readLine();
+                    int otp = Integer.parseInt(br.readLine());
+                    int cvv = Integer.parseInt(br.readLine());
+                    user.setAccount(new BankAccount(bankName, cardNumber, cardHolder, expireDate, otp, cvv));
+                }
+                users.add(user);
             }
-
-            int numAccounts = Integer.parseInt(br.readLine());
-            for (int i = 0; i < numAccounts; i++) {
-                String bankName = br.readLine();
-                String cardNumber = br.readLine();
-                String cardHolder = br.readLine();
-                String expireDate = br.readLine();
-                int otp = Integer.parseInt(br.readLine());
-                int cvv = Integer.parseInt(br.readLine());
-                user.setAccount(new BankAccount(bankName, cardNumber, cardHolder, expireDate, otp, cvv));
-            }
-            users.add(user);
-
         } catch (IOException e) {
             System.err.println("Error reading file");
         }
