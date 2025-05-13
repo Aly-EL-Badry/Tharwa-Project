@@ -61,9 +61,10 @@ public class IntegerationPanel implements Panel{
     @Override
     public void ViewMenu() {
 
-        System.out.println("            ##Connection Panel##\n\n");
+
 
         while (true) {
+            System.out.println("# === Connection Panel === #");
             String menu = "1.Connect with bank account\n2.Connect with stock account" +
                     "\n3.Go Back\n\nEnter your choice: ";
 

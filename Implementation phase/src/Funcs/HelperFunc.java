@@ -34,7 +34,7 @@ public class HelperFunc {
     public static boolean isFloat(String num){
         boolean dot =true;
         for (int idx = 0; idx < num.length(); idx++) {
-            if (!Character.isDigit(num.charAt(idx)) && !dot)
+            if (!Character.isDigit(num.charAt(idx)) || !dot)
                 return false;
             if(num.charAt(idx)=='.')
                 dot=false;
@@ -51,4 +51,6 @@ public class HelperFunc {
         }
         return input;
     }
+
+
 }
