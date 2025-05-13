@@ -68,9 +68,9 @@ The project includes full SDLC documentation:
 
 ## 👨‍💻 Contributors
 
-- **Aly El-Deen Yasser Ali**
+- **Fatema El-Zhraa Ahmed "Project Leader"**
 - **Nagham Wael**
-- **Fatema El-Zhraa Ahmed**
+- **Aly El-Deen Yasser Ali**
 
 ---
 
