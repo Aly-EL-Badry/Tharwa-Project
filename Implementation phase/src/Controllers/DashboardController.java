@@ -16,10 +16,10 @@ public class DashboardController {
     private Panel panel;
     private void viewMenu (){
 
-        System.out.println("                   ##Welcome ya investor "+user.getName()+"##\n\n");
+        System.out.println("##Welcome ya investor "+user.getName()+"##\n\n");
        while(true){
 
-           System.out.println("         ##MAIN PANEL##\n");
+           System.out.println("<--##MAIN PANEL##-->\n");
            String text ="Choose from the following" +
                    " which panel you want : \n\n"+"1.Invest panel" +
                    "\n2.Integration panel\n3.Zaket panel\n4.Exit\n\n"+
